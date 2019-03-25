@@ -6,7 +6,7 @@ namespace Exercise7
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+			UDPServer.StartListener();
         }
     }
 }

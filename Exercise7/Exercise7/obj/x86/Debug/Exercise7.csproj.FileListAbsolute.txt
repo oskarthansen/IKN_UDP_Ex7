@@ -3,3 +3,9 @@
 /root/Documents/Ex7UDP/Exercise7/Exercise7/obj/x86/Debug/Exercise7.csproj.CoreCompileInputs.cache
 /root/Documents/Ex7UDP/Exercise7/Exercise7/obj/x86/Debug/Exercise7.exe
 /root/Documents/Ex7UDP/Exercise7/Exercise7/obj/x86/Debug/Exercise7.pdb
+/root/Documents/Ex7UDP/IKN_UDP_Ex7/Exercise7/Exercise7/obj/x86/Debug/Exercise7.csprojResolveAssemblyReference.cache
+/root/Documents/Ex7UDP/IKN_UDP_Ex7/Exercise7/Exercise7/obj/x86/Debug/Exercise7.csproj.CoreCompileInputs.cache
+/root/Documents/Ex7UDP/IKN_UDP_Ex7/Exercise7/Exercise7/obj/x86/Debug/Exercise7.exe
+/root/Documents/Ex7UDP/IKN_UDP_Ex7/Exercise7/Exercise7/obj/x86/Debug/Exercise7.pdb
+/root/Documents/Ex7UDP/IKN_UDP_Ex7/Exercise7/Exercise7/bin/Debug/Exercise7.exe
+/root/Documents/Ex7UDP/IKN_UDP_Ex7/Exercise7/Exercise7/bin/Debug/Exercise7.pdb
