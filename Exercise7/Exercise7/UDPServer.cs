@@ -60,7 +60,7 @@ namespace Exercise7
 					}
 					else if(ReceivedString == "l")
 					{
-						string UptimeInfo = "Data her om loadavg"
+						string UptimeInfo = "Data her om loadavg";
 
                         byte[] data = Encoding.ASCII.GetBytes(UptimeInfo);
                         listener.Send(data, data.Length, groupEP);
@@ -68,7 +68,7 @@ namespace Exercise7
 					else
 					{
 						// Skriv til client at svar ikke var gyldigt.
-						string UptimeInfo = "Invalid request"
+						string UptimeInfo = "Invalid request";
 
                         byte[] data = Encoding.ASCII.GetBytes(UptimeInfo);
                         listener.Send(data, data.Length, groupEP);

@@ -6,7 +6,19 @@ namespace Exercise7
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+			UDPClient client = new UDPClient();
+			string choice = "";
+
+			while(choice.ToLower() != "q")
+			{
+				Console.WriteLine("Enter character to send to server:");
+				choice = Console.ReadLine();
+				if (choice.ToLower() != "q")
+					client.Send(choice);
+				UDPClient.StartListener();
+
+
+			}
         }
     }
 }
