@@ -6,6 +6,7 @@ namespace Exercise7
     {
         public static void Main(string[] args)
         {
+
 			UDPClient client = new UDPClient();
 			string choice = "";
 
@@ -18,7 +19,9 @@ namespace Exercise7
 				UDPClient.StartListener();
 
 
-			}
+
+			UDPServer.StartListener();
+
         }
     }
 }

@@ -10,11 +10,16 @@ namespace Exercise7
 {
     public class UDPServer
     {
+		static Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
+        static IPAddress broadcast = IPAddress.Parse("10.0.0.2");
+        private const int listenPort = 9000;
+
         public UDPServer()
         {
 			
         }
-
+        
 
 		public static TimeSpan UpTime
         {
@@ -27,13 +32,25 @@ namespace Exercise7
                 }
             }
         }
+        
 
-		private const int listenPort = 9000;
 
-        private static void StartListener()
+		public static void Send(string request)
         {
-            UdpClient listener = new UdpClient(listenPort);
+            byte[] sendbuf = Encoding.ASCII.GetBytes(request);
+            IPEndPoint ep = new IPEndPoint(broadcast, 9000);
+
+            s.SendTo(sendbuf, ep);
+
+            Console.WriteLine($"Message sent to server: {request}");
+
+        }
+
+        public static void StartListener()
+        {
+            
             IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, listenPort);
+			UdpClient listener = new UdpClient(listenPort);
 
             try
             {
@@ -53,25 +70,34 @@ namespace Exercise7
 					if(ReceivedString == "u")
 					{
 						string UptimeInfo = UDPServer.UpTime.ToString();
-
-                        byte[] data = Encoding.ASCII.GetBytes(UptimeInfo);
-                        listener.Send(data, data.Length, groupEP);
+						Send(UptimeInfo);
+						Console.WriteLine($"Wrote: {UptimeInfo}");
 
 					}
 					else if(ReceivedString == "l")
 					{
 						string UptimeInfo = "Data her om loadavg";
 
-                        byte[] data = Encoding.ASCII.GetBytes(UptimeInfo);
-                        listener.Send(data, data.Length, groupEP);
-					}
-					else
-					{
-						// Skriv til client at svar ikke var gyldigt.
-						string UptimeInfo = "Invalid request";
 
                         byte[] data = Encoding.ASCII.GetBytes(UptimeInfo);
                         listener.Send(data, data.Length, groupEP);
+
+						Send(UptimeInfo);
+						Console.WriteLine($"Wrote: {UptimeInfo}");
+      
+
+					}
+					else
+					{
+
+						string UptimeInfo = "Invalid request";
+
+                        byte[] data = Encoding.ASCII.GetBytes(UptimeInfo);
+
+						string req = "Invalid request";
+						Send(req);
+						Console.WriteLine($"Wrote: {req}");
+
 					}               
                 }
             }
@@ -84,5 +110,7 @@ namespace Exercise7
                 listener.Close();
             }
         }
+
+
     }
 }
