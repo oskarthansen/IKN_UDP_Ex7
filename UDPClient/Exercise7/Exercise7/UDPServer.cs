@@ -112,15 +112,33 @@ namespace Exercise7
 					}
 					else if(ReceivedString == "l")
 					{
+<<<<<<< HEAD:Exercise7/Exercise7/UDPServer.cs
 						string CPUload = "CPU load: " + UDPServer.CPULoad;
 						Send(CPUload);
+=======
+						string UptimeInfo = "Data her om loadavg";
+
+
+                        byte[] data = Encoding.ASCII.GetBytes(UptimeInfo);
+                        listener.Send(data, data.Length, groupEP);
+
+						Send(UptimeInfo);
+						Console.WriteLine($"Wrote: {UptimeInfo}");
+      
+
+>>>>>>> 617c0116f1c1f0b4634362f09af9bfef6e6a4f5c:UDPClient/Exercise7/Exercise7/UDPServer.cs
 					}
 					else
 					{
-						// Skriv til client at svar ikke var gyldigt.
+
+						string UptimeInfo = "Invalid request";
+
+                        byte[] data = Encoding.ASCII.GetBytes(UptimeInfo);
+
 						string req = "Invalid request";
 						Send(req);
 						Console.WriteLine($"Wrote: {req}");
+
 					}               
                 }
             }
