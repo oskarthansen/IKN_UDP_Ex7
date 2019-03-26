@@ -2,15 +2,15 @@
 
 namespace Exercise7
 {
-    class MainClass
-    {
-        public static void Main(string[] args)
-        {
+	class MainClass
+	{
+		public static void Main(string[] args)
+		{
 
 			UDPClient client = new UDPClient();
 			string choice = "";
 
-			while(choice.ToLower() != "q")
+			while (choice.ToLower() != "q")
 			{
 				Console.WriteLine("Enter character to send to server:");
 				choice = Console.ReadLine();
@@ -19,9 +19,7 @@ namespace Exercise7
 				UDPClient.StartListener();
 
 
-
-			UDPServer.StartListener();
-
-        }
-    }
+			}
+		}
+	}
 }

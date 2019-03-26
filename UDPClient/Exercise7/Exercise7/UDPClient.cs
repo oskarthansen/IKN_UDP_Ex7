@@ -21,12 +21,14 @@ namespace Exercise7
             try
             {
 
-                    Console.WriteLine("Waiting for client");
+                    Console.WriteLine("Waiting for server");
 
                     byte[] bytes = listener.Receive(ref groupEP);
 
                     Console.WriteLine($"Received request from {groupEP} :");
-                    Console.WriteLine($"Message: {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");            
+                    Console.WriteLine($"Message:"); 
+				    Console.WriteLine($"{Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
+				Console.WriteLine("");
             }
             catch (SocketException e)
             {
