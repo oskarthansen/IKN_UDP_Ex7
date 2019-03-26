@@ -3,7 +3,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Exercise7/UDPClient.cs">
     <Files>
       <File FileName="Exercise7/Program.cs" Line="1" Column="1" />
-      <File FileName="Exercise7/UDPServer.cs" Line="29" Column="10" />
+      <File FileName="Exercise7/UDPServer.cs" Line="29" Column="8" />
       <File FileName="Exercise7/UDPClient.cs" Line="7" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
