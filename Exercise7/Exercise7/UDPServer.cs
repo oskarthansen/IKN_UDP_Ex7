@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
@@ -20,16 +21,49 @@ namespace Exercise7
 			
         }
         
-
-		public static TimeSpan UpTime
+		private static string line;
+		public static string UpTime
         {
             get
             {
-                using (var uptime = new PerformanceCounter("System", "System Up Time"))
+				try
+				{
+					using (StreamReader sr = new StreamReader("/~/../proc/uptime"))
+					{
+						line = sr.ReadToEnd();
+						Console.WriteLine($"Uptime: {line}");
+
+					}
+				}
+				catch(IOException e)
+				{
+					Console.WriteLine(e.Message);
+				}
+				return line;
+          
+            }
+        }
+        
+
+		public static string CPULoad
+        {
+            get
+            {
+                try
                 {
-                    uptime.NextValue();       //Call this an extra time before reading its value
-                    return TimeSpan.FromSeconds(uptime.NextValue());
+                    using (StreamReader sr = new StreamReader("/~/../proc/loadavg"))
+                    {
+                        line = sr.ReadToEnd();
+                        Console.WriteLine($"CPU load: {line}");
+
+                    }
                 }
+                catch(IOException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                return line;
+          
             }
         }
         
@@ -63,23 +97,23 @@ namespace Exercise7
                     Console.WriteLine($"Received request from {groupEP} :");
 					Console.WriteLine($"Message: {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
 
+
 					var ReceivedString = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
                     
 					ReceivedString = ReceivedString.ToLower();
-                    
+
+					System.Threading.Thread.Sleep(100);
+
 					if(ReceivedString == "u")
 					{
-						string UptimeInfo = UDPServer.UpTime.ToString();
+						string UptimeInfo = "Uptime: " + UDPServer.UpTime;
 						Send(UptimeInfo);
-						Console.WriteLine($"Wrote: {UptimeInfo}");
 
 					}
 					else if(ReceivedString == "l")
 					{
-						string UptimeInfo = "Data her om loadavg";
-						Send(UptimeInfo);
-						Console.WriteLine($"Wrote: {UptimeInfo}");
-      
+						string CPUload = "CPU load: " + UDPServer.CPULoad;
+						Send(CPUload);
 					}
 					else
 					{
