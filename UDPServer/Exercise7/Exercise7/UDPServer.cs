@@ -76,7 +76,7 @@ namespace Exercise7
 
             s.SendTo(sendbuf, ep);
 
-            Console.WriteLine($"Message sent to server: {request}");
+            Console.WriteLine($"Message sent to client: {request}");
 
         }
 
@@ -112,29 +112,12 @@ namespace Exercise7
 					}
 					else if(ReceivedString == "l")
 					{
-<<<<<<< HEAD:Exercise7/Exercise7/UDPServer.cs
+
 						string CPUload = "CPU load: " + UDPServer.CPULoad;
-						Send(CPUload);
-=======
-						string UptimeInfo = "Data her om loadavg";
-
-
-                        byte[] data = Encoding.ASCII.GetBytes(UptimeInfo);
-                        listener.Send(data, data.Length, groupEP);
-
-						Send(UptimeInfo);
-						Console.WriteLine($"Wrote: {UptimeInfo}");
-      
-
->>>>>>> 617c0116f1c1f0b4634362f09af9bfef6e6a4f5c:UDPClient/Exercise7/Exercise7/UDPServer.cs
+						Send(CPUload);                                    
 					}
 					else
-					{
-
-						string UptimeInfo = "Invalid request";
-
-                        byte[] data = Encoding.ASCII.GetBytes(UptimeInfo);
-
+					{                  
 						string req = "Invalid request";
 						Send(req);
 						Console.WriteLine($"Wrote: {req}");
