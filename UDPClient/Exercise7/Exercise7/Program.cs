@@ -15,10 +15,10 @@ namespace Exercise7
 				Console.WriteLine("Enter character to send to server:");
 				choice = Console.ReadLine();
 				if (choice.ToLower() != "q")
+				{
 					client.Send(choice);
-				UDPClient.StartListener();
-
-
+                    UDPClient.StartListener();
+				}            
 			}
 		}
 	}
